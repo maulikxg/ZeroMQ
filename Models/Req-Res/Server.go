@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"time"
-
 	zmq "github.com/pebbe/zmq4"
 )
 

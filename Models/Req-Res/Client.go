@@ -16,7 +16,7 @@ func main() {
 	defer socket.Close()
 
 	// Connect to the server
-	socket.Connect("tcp://localhost:5555")
+	socket.Connect("tcp://10.20.40.165:5555")
 
 	for i := 0; i < 10; i++ {
 		// Send a request
@@ -28,3 +28,10 @@ func main() {
 		fmt.Println("Received", reply)
 	}
 }
+
+
+// Version of ZeroMQ
+// func main() {
+// 	major, minor, patch := zmq.Version()
+// 	fmt.Printf("Current 0MQ version is %d.%d.%d\n", major, minor, patch)
+// }
