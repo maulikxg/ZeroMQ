@@ -57,7 +57,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"time"
 
 	zmq "github.com/pebbe/zmq4"
 )
@@ -96,6 +95,7 @@ func main() {
 	defer file.Close()
 
 	// Receive and write chunks
+	i := 0
 	for {
 		// Receive a chunk
 		chunk, err := socket.Recv(0)
@@ -111,8 +111,10 @@ func main() {
 		}
 
 		fmt.Printf("Received chunk (%d bytes)\n", len(chunk))
+		fmt.Println(i)
+		i++
 
-		time.Sleep(time.Second * 1)
+		// time.Sleep(time.Second * 1)
 	}
 
 	fmt.Println("File received and saved successfully as", outputFilePath)

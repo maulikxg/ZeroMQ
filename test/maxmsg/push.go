@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
-"os"
+    "os"
+	"time"
 	zmq "github.com/pebbe/zmq4"
 )
 
@@ -87,6 +88,8 @@ func main() {
 		
 		fmt.Printf("Sent chunk %d (%d bytes)\n", chunkID, n)
 		chunkID++
+
+		time.Sleep(time.Second * 1)
 	}
 
 	fmt.Println("File sent successfully")
