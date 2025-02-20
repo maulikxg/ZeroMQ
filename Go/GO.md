@@ -277,6 +277,53 @@ fmt.Println(applyFunction(multiply, 3, 4)) // ✅ Output: 12
    ```
     - Each `counter()` call creates a **new closure** with its own state.
 
+    
+## 🔹 **Where is `count` Stored?**
+Normally, when a function exits, its stack is cleaned up, but **closures work differently**.
+
+✅ The `count` variable is **not stored in the stack**, but in the **heap**.
+
+- When `counter()` runs, `count` is **allocated on the heap** (instead of the stack).
+- The anonymous function **captures** `count`, which keeps it alive even after `counter()` finishes.
+- This means `count` persists between function calls.
+
+---
+
+## 🔹 **How Closures Work in Memory**
+1. `counter()` is called → `count := 0` is **created on the heap**.
+2. The anonymous function is returned but **remembers** the `count` variable.
+3. `next()` calls the function and updates `count`, which persists in memory.
+
+---
+
+## 🔹 **Why is This Useful?**
+Closures are useful for:
+- **Maintaining state** between function calls without using global variables.
+- **Encapsulating logic** inside functions.
+- **Creating factory functions** (like `counter()`).
+
+---
+
+## 🔹 **Key Takeaways**
+- Closures **"trap"** variables from their surrounding scope and keep them alive.
+- Variables captured by a closure are **stored on the heap**, not the stack.
+- Each call to `counter()` creates a **new instance** of `count`, meaning different counters don’t interfere.
+
+---
+
+### 🔥 **Example with Multiple Closures**
+```go
+counter1 := counter()
+counter2 := counter()
+
+fmt.Println(counter1()) // 1
+fmt.Println(counter1()) // 2
+fmt.Println(counter2()) // 1 (Separate instance)
+fmt.Println(counter2()) // 2
+```
+Since `counter1` and `counter2` are **separate closures**, they maintain **independent** `count` variables.
+
+
 ---
 
 ## **5. Variables in Go**
