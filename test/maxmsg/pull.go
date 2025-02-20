@@ -41,8 +41,8 @@
 // 			log.Println("Error receiving message:", err)
 // 			continue
 // 		}
-		
-// 		fmt.Println("Received len messaage:", len(msg))	
+
+// 		fmt.Println("Received len messaage:", len(msg))
 // 		fmt.Println(i)
 // 		i++
 
@@ -103,7 +103,6 @@ func main() {
 			log.Fatal("Failed to receive chunk:", err)
 		}
 
-		
 		// Write the chunk to the file
 		_, err = file.WriteString(chunk)
 		if err != nil {

@@ -2,16 +2,16 @@ package main
 
 import (
 	"fmt"
-	"log"
-    "os"
-	"time"
 	zmq "github.com/pebbe/zmq4"
+	"log"
+	"os"
+	"time"
 )
 
 const (
-	chunk = 2*1024*1024 * 1024 // 1 MB chunks (adjust as needed)
-	fileSize  = 10 * 1024 * 1024 * 1024 // 4 GB file size
-	filename  = "test.txt" // Path to the file to send
+	chunk    = 2 * 1024 * 1024 * 1024  // 1 MB chunks (adjust as needed)
+	fileSize = 10 * 1024 * 1024 * 1024 // 4 GB file size
+	filename = "test.txt"              // Path to the file to send
 )
 
 func main() {
@@ -36,17 +36,15 @@ func main() {
 
 	fmt.Println("PUSH Server Started...")
 
+	// for file stuff
 
-	// for file stuff 
-
-	// create the new dummy file 
+	// create the new dummy file
 	fmt.Println("Creating the dummy file")
 	file, err := os.Create(filename)
 	if err != nil {
 		log.Fatal("Failed to create file:", err)
 	}
 	defer file.Close()
-
 
 	// write the data to the file
 	fmt.Println("Writing the data to the file")
@@ -61,8 +59,8 @@ func main() {
 
 	fmt.Println("File written successfully")
 
-	// open file for reading 
-	file , err = os.Open(filename)
+	// open file for reading
+	file, err = os.Open(filename)
 	if err != nil {
 		log.Println("Error opening file")
 	}
@@ -72,7 +70,7 @@ func main() {
 	chunkID := 0
 
 	for {
-		n , err := file.Read(buffer)
+		n, err := file.Read(buffer)
 		if err != nil {
 			if err.Error() == "EOF" {
 				break // End of file reached
@@ -83,9 +81,9 @@ func main() {
 		// Send the chunk
 		_, err = socket.SendBytes(buffer[:n], 0)
 		if err != nil {
-				log.Fatal("Failed to send chunk:", err)
+			log.Fatal("Failed to send chunk:", err)
 		}
-		
+
 		fmt.Printf("Sent chunk %d (%d bytes)\n", chunkID, n)
 		chunkID++
 
@@ -94,10 +92,9 @@ func main() {
 
 	fmt.Println("File sent successfully")
 
-
 	// n := 10
 	// for i:=0; i<n; i++ {
-    //     // sending the message no.
+	//     // sending the message no.
 	// 	fmt.Println("Sending no:", i)
 
 	// 	// Send a message (task)
@@ -110,7 +107,6 @@ func main() {
 
 	// }
 
-	// for file stuff 
-
+	// for file stuff
 
 }
