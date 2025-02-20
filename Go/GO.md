@@ -607,25 +607,6 @@ const (
 
 ---
 
-## **Next Steps**
-So far, we’ve covered:
-✅ **Basic Types**  
-✅ **Zero Values**  
-✅ **Type Conversions**  
-✅ **Type Inference**  
-✅ **Constants & iota**
-
-🔹 Next, I’ll cover:
-- **Functions Continued (Higher-Order Functions, Closures)**
-- **Multiple Return Values**
-- **More Complex Edge Cases**
-
-Would you like me to continue in this structured way, or do you have any specific topics you want more depth on? 🚀
-
-Great! Let's continue with in-depth explanations, real-world scenarios, and edge cases for the next topics. 🚀
-
----
-
 # **12. Functions Continued (Higher-Order Functions, Closures, and Edge Cases)**
 
 ## **12.1 Higher-Order Functions**
