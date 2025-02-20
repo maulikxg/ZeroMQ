@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	chunkSize = 2 * 1024 * 1024        // 2MB chunks
+	chunkSize = 1 * 1024 * 1024 * 1024 // 2MB chunks
 	fileSize  = 4 * 1024 * 1024 * 1024 // 4GB file
 	filename  = "utf16_ab_4gb.txt"
 )
